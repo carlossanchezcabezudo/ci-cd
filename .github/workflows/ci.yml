@@ -1,0 +1,13 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  html-validator:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: HTML validator
+      run: docker run --rm -v ${{ github.workspace }}/src:/src ghcr.io/validator/validator:latest vnu /src/index.html
